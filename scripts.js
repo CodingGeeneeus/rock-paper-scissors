@@ -1,7 +1,9 @@
 
-let randNum = Math.floor(Math.random()*3)+1
+
 
 function getComputerChoice() {
+    let randNum = Math.floor(Math.random()*3)+1
+
     switch(randNum) {
         case 1:
             return 'ROCK'   
@@ -9,40 +11,59 @@ function getComputerChoice() {
             return 'PAPER'
         case 3:
             return 'SCISSORS';
+    }
 }
-}
+
+
 
 function playRound(challenger,computerChoice){
     if(computerChoice == challenger) {
-        return "It's a draw!";
+        return "It's a Draw!";
     } else if(challenger == 'ROCK' && computerChoice == 'PAPER') {
-        return `You lose!, ${computerChoice} beats ${playerSelection}`;
+        return 0;
 
     } else if(challenger == 'ROCK' && computerChoice == 'SCISSORS') {
-        return `You win! ${playerSelection} beats ${computerChoice}` ;
+        return 1 ;
 
     } else if(challenger == 'PAPER' && computerChoice == 'SCISSORS') {
-        return `You lose!, ${computerChoice} beats ${playerSelection}`;
+        return 0;
 
     } else if(challenger == 'PAPER' && computerChoice == 'ROCK') {
-        return `You win! ${playerSelection} beats ${computerChoice}` ;
+        return 1 ;
 
     } else if(challenger == 'SCISSORS' && computerChoice == 'ROCK') {
-        return `You lose!, ${computerChoice} beats ${playerSelection}`;
+        return 0;
 
     } else if(challenger == 'SCISSORS' && computerChoice == 'PAPER') {
-        return `You win! ${playerSelection} beats ${computerChoice}`;
+        return 1;
 
     }
 } 
 
 
 
-let playerSelection = prompt('What is your selection?' )
-let challenger = playerSelection.toUpperCase();
+function game() {
+    let challenger = prompt('What is your selection?').toUpperCase()
+    let computerChoice = getComputerChoice()
+    
+        if (playRound(challenger,computerChoice) == 1){
+            return 'Player Wins!'
+        } else if (playRound(challenger, computerChoice) == 0) {
+            return 'Computer Wins!'
+        
+     
 
-let computerChoice = getComputerChoice();
 
-for (let i = 0; i < 5; i++) {
-   playRound()
- }
+    }
+}
+
+function score(a,b){
+    if (game() == 'Player Wins!'){
+        return a++
+    } else if (game() == 'Computer Wins!') {
+        return b++
+    }
+}
+
+console.log(game(), score(0,0))
+
