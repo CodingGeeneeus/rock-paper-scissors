@@ -17,53 +17,57 @@ function getComputerChoice() {
 
 
 function playRound(challenger,computerChoice){
-    if(computerChoice == challenger) {
-        return "It's a Draw!";
-    } else if(challenger == 'ROCK' && computerChoice == 'PAPER') {
-        return 0;
+    if(challenger.toUpperCase() == computerChoice) {
+        return draw;
+    } else if(challenger.toUpperCase() == 'ROCK' && computerChoice == 'PAPER') {
+        computerScore++
+        return lose;
 
-    } else if(challenger == 'ROCK' && computerChoice == 'SCISSORS') {
-        return 1 ;
+    } else if(challenger.toUpperCase() == 'ROCK' && computerChoice == 'SCISSORS') {
+        playerScore++;
+        return win;
 
-    } else if(challenger == 'PAPER' && computerChoice == 'SCISSORS') {
-        return 0;
+    } else if(challenger.toUpperCase() == 'PAPER' && computerChoice == 'SCISSORS') {
+        computerScore++
+        return lose;
 
-    } else if(challenger == 'PAPER' && computerChoice == 'ROCK') {
-        return 1 ;
+    } else if(challenger.toUpperCase() == 'PAPER' && computerChoice == 'ROCK') {
+        playerScore++
+        return win;
 
-    } else if(challenger == 'SCISSORS' && computerChoice == 'ROCK') {
-        return 0;
+    } else if(challenger.toUpperCase() == 'SCISSORS' && computerChoice == 'ROCK') {
+        computerScore++
+        return lose;
 
-    } else if(challenger == 'SCISSORS' && computerChoice == 'PAPER') {
-        return 1;
+    } else if(challenger.toUpperCase() == 'SCISSORS' && computerChoice == 'PAPER') {
+        playerScore++
+        return win;
 
     }
 } 
 
-
+var playerScore = 0
+var computerScore = 0
+const win = 'You Win!'
+const lose = 'You Lose!'
+const draw = 'Draw!'
 
 function game() {
-    let challenger = prompt('What is your selection?').toUpperCase()
-    let computerChoice = getComputerChoice()
-    
-        if (playRound(challenger,computerChoice) == 1){
-            return 'Player Wins!'
-        } else if (playRound(challenger, computerChoice) == 0) {
-            return 'Computer Wins!'
+    for (let i = 0; i<5; i++) {
+        let challenger = prompt('What is your selection?')
+        const computerChoice = getComputerChoice()
+        console.log(playRound(challenger,computerChoice));
+        console.log("You're score:" + playerScore)
+        console.log("Computer's score:" + computerScore)
         
-     
-
-
     }
 }
 
-function score(a,b){
-    if (game() == 'Player Wins!'){
-        return a++
-    } else if (game() == 'Computer Wins!') {
-        return b++
-    }
-}
+game()
+        
+console.log(`Final Score:`)
+console.log(` Player: ${playerScore} to Computer: ${computerScore}`)
 
-console.log(game(), score(0,0))
+
+
 
