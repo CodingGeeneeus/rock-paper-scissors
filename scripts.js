@@ -43,4 +43,6 @@ let challenger = playerSelection.toUpperCase();
 
 let computerChoice = getComputerChoice();
 
-
+for (let i = 0; i < 5; i++) {
+   playRound()
+ }
