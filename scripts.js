@@ -1,3 +1,39 @@
+const playerText = document.querySelector('#playerText')
+const computerText = document.querySelector('#computerText')
+const resultText = document.querySelector('#result')
+const choicebtns = document.querySelectorAll('.choicebtns');
+const playerScore = document.querySelector('.playerScore')
+const computerScore = document.querySelector('.computerScore')
+
+let player;
+let computer;
+var playerWin = 0
+var computerWin = 0
+
+
+
+choicebtns.forEach(button => button.addEventListener('click' , () => {
+    
+    //clears computer and result text before timeout display
+    resultText.textContent = `Result: `
+    computerText.textContent =  `Computer: `;
+    //gets player input and runs getComputerChoice and checkWinner function
+    player = button.textContent;
+    computer = getComputerChoice();
+    playerText.textContent = `Player: ${player}`;
+    //gives some suspense..
+    setTimeout(() => {
+        computerText.textContent =  `Computer: ${computer}`;
+        resultText.textContent = `Result: ${checkWinner()}`
+    }, 200)
+    
+    
+}));
+
+
+
+
+
 
 
 
@@ -6,68 +42,37 @@ function getComputerChoice() {
 
     switch(randNum) {
         case 1:
-            return 'ROCK'   
+            return 'Rock';
         case 2:
-            return 'PAPER'
+            return 'Paper';
         case 3:
-            return 'SCISSORS';
+            return 'Scissors';
     }
 }
 
 
+function checkWinner() {
 
-function playRound(challenger,computerChoice){
-    if(challenger.toUpperCase() == computerChoice) {
-        return draw;
-    } else if(challenger.toUpperCase() == 'ROCK' && computerChoice == 'PAPER') {
-        computerScore++
-        return lose;
+ if (player == computer) {
+    return "Draw!"
+  } else if (player == 'Rock' && computer == 'Paper') {
+        computerWin++
+        return "You Lose!"
+    } else if (player == 'Rock' && computer == 'Scissors') {
+        playerWin++
+        return "You Win!"
+  } else if (player == 'Paper' && computer == 'Scissors') {
+      computerWin++
+      return "You Lose!"
+  } else if (player == 'Paper' && computer == 'Rock') {
+    playerWin++
+      return "You Win!"
+  } else if (player == 'Scissors' && computer == 'Rock') {
+    computerWin++
+      return "You Lose"
+  }else if (player == 'Scissors' && computer == 'Paper') {
+    playerWin++
+    return "You Win!"
+  }
 
-    } else if(challenger.toUpperCase() == 'ROCK' && computerChoice == 'SCISSORS') {
-        playerScore++;
-        return win;
-
-    } else if(challenger.toUpperCase() == 'PAPER' && computerChoice == 'SCISSORS') {
-        computerScore++
-        return lose;
-
-    } else if(challenger.toUpperCase() == 'PAPER' && computerChoice == 'ROCK') {
-        playerScore++
-        return win;
-
-    } else if(challenger.toUpperCase() == 'SCISSORS' && computerChoice == 'ROCK') {
-        computerScore++
-        return lose;
-
-    } else if(challenger.toUpperCase() == 'SCISSORS' && computerChoice == 'PAPER') {
-        playerScore++
-        return win;
-
-    }
-} 
-
-var playerScore = 0
-var computerScore = 0
-const win = 'You Win!'
-const lose = 'You Lose!'
-const draw = 'Draw!'
-
-function game() {
-    for (let i = 0; i<5; i++) {
-        let challenger = prompt('What is your selection?')
-        const computerChoice = getComputerChoice()
-        console.log(playRound(challenger,computerChoice));
-        console.log("You're score:" + playerScore)
-        console.log("Computer's score:" + computerScore)
-        
-    }
-}
-
-game()
-        
-console.log(`Final Score:`)
-console.log(` Player: ${playerScore} to Computer: ${computerScore}`)
-
-
-
-
+  }

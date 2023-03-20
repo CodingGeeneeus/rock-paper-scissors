@@ -1,0 +1,28 @@
+
+body {
+    background-color: grey;
+}
+
+
+.selections{
+    display: flex;
+    gap: 10px;
+    
+
+}
+
+button {
+    background-color: whitesmoke;
+    border: none;
+    font-size: larger;
+    border-radius: 5px;
+    height: 50px;
+    width: 150px;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: yellow;
+    box-shadow: 10px;
+}
+
