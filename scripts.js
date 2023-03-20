@@ -13,7 +13,6 @@ var computerWin = 0
 
 
 choicebtns.forEach(button => button.addEventListener('click' , () => {
-    
     //clears computer and result text before timeout display
     resultText.textContent = `Result: `
     computerText.textContent =  `Computer: `;
@@ -21,13 +20,14 @@ choicebtns.forEach(button => button.addEventListener('click' , () => {
     player = button.textContent;
     computer = getComputerChoice();
     playerText.textContent = `Player: ${player}`;
-    //gives some suspense..
+    //gives some suspense
     setTimeout(() => {
         computerText.textContent =  `Computer: ${computer}`;
         resultText.textContent = `Result: ${checkWinner()}`
     }, 200)
     
-    
+    playerScore.textContent = `Player: ${playerWin}`
+    computerScore.textContent = `Computer: ${computerWin}`
 }));
 
 
