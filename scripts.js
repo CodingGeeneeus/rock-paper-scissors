@@ -81,10 +81,7 @@ function checkWinner() {
     window.location.reload("Refresh")
   })
 
-  //tactile click function for better feel
-const selectButtons = document.querySelectorAll('.selections')
-
-selectButtons.addEventListener('click', )
+  
   
 
   
