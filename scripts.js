@@ -4,6 +4,9 @@ const resultText = document.querySelector('#result')
 const choicebtns = document.querySelectorAll('.choicebtns');
 const playerScore = document.querySelector('.playerScore')
 const computerScore = document.querySelector('.computerScore')
+const refreshButton = document.querySelector('#refreshButton')
+
+
 
 let player;
 let computer;
@@ -30,49 +33,58 @@ choicebtns.forEach(button => button.addEventListener('click' , () => {
     computerScore.textContent = `Computer: ${computerWin}`
 }));
 
-
-
-
-
-
-
-
+//random computer choice function
 function getComputerChoice() {
     let randNum = Math.floor(Math.random()*3)+1
 
     switch(randNum) {
         case 1:
-            return 'Rock';
+            return '👊';
         case 2:
-            return 'Paper';
+            return '✋';
         case 3:
-            return 'Scissors';
+            return '✌';
     }
 }
 
-
+//checks inputs from player and getComputerChoice function
 function checkWinner() {
 
  if (player == computer) {
-    return "Draw!"
-  } else if (player == 'Rock' && computer == 'Paper') {
+      return "Draw!"
+    } else if (player == '👊' && computer == '✋') {
         computerWin++
         return "You Lose!"
-    } else if (player == 'Rock' && computer == 'Scissors') {
+    } else if (player == '👊' && computer == '✌') {
         playerWin++
         return "You Win!"
-  } else if (player == 'Paper' && computer == 'Scissors') {
-      computerWin++
-      return "You Lose!"
-  } else if (player == 'Paper' && computer == 'Rock') {
-    playerWin++
+    } else if (player == '✋' && computer == '✌') {
+        computerWin++
+        return "You Lose!"
+    } else if (player == '✋' && computer == '👊') {
+        playerWin++
+        return "You Win!"
+    } else if (player == '✌' && computer == '👊') {
+        computerWin++
+        return "You Lose!"
+    }else if (player == '✌' && computer == '✋') {
+      playerWin++
       return "You Win!"
-  } else if (player == 'Scissors' && computer == 'Rock') {
-    computerWin++
-      return "You Lose"
-  }else if (player == 'Scissors' && computer == 'Paper') {
-    playerWin++
-    return "You Win!"
-  }
+    }
 
-  }
+  };
+
+
+  //refresh button 
+
+  refreshButton.addEventListener('click', function refresh(){
+    window.location.reload("Refresh")
+  })
+
+  //tactile click function for better feel
+const selectButtons = document.querySelectorAll('.selections')
+
+selectButtons.addEventListener('click', )
+  
+
+  
